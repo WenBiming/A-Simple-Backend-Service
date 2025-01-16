@@ -16,7 +16,7 @@ class OrderServiceTest {
     fun testCalculateDeliveryFee() {
         val venueDynamic = externalService.fetchVenueDynamic("home-assignment-venue-stockholm")
         assertNotNull(venueDynamic)
-        val distance = 600.0
+        val distance = 600
         val res = venueDynamic?.let { orderService.computeDeliveryFee(distance, it) }
         println(res)
     }
