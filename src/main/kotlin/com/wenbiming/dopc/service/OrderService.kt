@@ -3,7 +3,6 @@ package com.wenbiming.dopc.service
 import com.wenbiming.dopc.data.*
 import com.wenbiming.dopc.utils.*
 
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import kotlin.math.round
 

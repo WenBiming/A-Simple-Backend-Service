@@ -11,7 +11,7 @@ class CalculaterTest {
         val lon2 = -18.039073461128798
         val resInKM = haversineInKilometre(lat1, lon1, lat2, lon2)
         println(resInKM)
-        val resInMetre = calculateDistInMetre(lat1, lon1, lat2, lon2)
+        val resInMetre = calculateDistInMetreDouble(lat1, lon1, lat2, lon2)
         println(resInMetre)
     }
 }
