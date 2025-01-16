@@ -16,6 +16,10 @@ fun haversineInKilometre(lat1: Double, lon1: Double, lat2: Double, lon2: Double)
     return R * c // Distance in kilometers
 }
 
-fun calculateDistInMetre(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+fun calculateDistInMetreDouble(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
     return haversineInKilometre(lat1, lon1, lat2, lon2) * 1000
+}
+
+fun calculateDistInMetreInteger(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
+    return round(haversineInKilometre(lat1, lon1, lat2, lon2) * 1000).toInt()
 }

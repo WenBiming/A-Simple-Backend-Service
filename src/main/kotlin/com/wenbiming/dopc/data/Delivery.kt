@@ -9,5 +9,5 @@ data class DeliveryResponse(
 
 data class Delivery(
     val fee: Int,
-    val distance: Double
+    val distance: Int
 )

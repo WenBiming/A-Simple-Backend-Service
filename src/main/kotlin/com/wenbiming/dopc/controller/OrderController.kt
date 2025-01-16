@@ -3,6 +3,7 @@ package com.wenbiming.dopc.controller
 import com.wenbiming.dopc.service.ExternalService
 import com.wenbiming.dopc.service.OrderService
 import com.wenbiming.dopc.data.*
+import kotlinx.coroutines.runBlocking
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController
 class OrderController(private val externalService: ExternalService, private val orderService: OrderService) {
 
     @GetMapping("/delivery-order-price")
-    fun getDeliveryOrderPrice(
+     fun getDeliveryOrderPrice(
         @RequestParam venue_slug: String,
         @RequestParam cart_value: Int,
         @RequestParam user_lat: Double,
         @RequestParam user_lon: Double
-    ): ResponseEntity<Any> {
+    ): ResponseEntity<Any>  {
         // Extracted values from the request
         println("Venue Slug: $venue_slug")
         println("Cart Value: $cart_value")
@@ -39,6 +40,10 @@ class OrderController(private val externalService: ExternalService, private val 
             return ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST)
         }
 
+
+
+
+
         val cartValue: Long = cart_value.toLong()
 
         // [longitude, latitude]
@@ -47,7 +52,7 @@ class OrderController(private val externalService: ExternalService, private val 
         val deliveryFee: Long? = orderService.computeDeliveryFee(distUserVenue, venueDynamicResponse)
         if (deliveryFee == null) {
             val errorResponse = mapOf("error" to "user is too far away from venue")
-            return ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST)
+            return  ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST)
         }
         val smallOrderSurcharge: Long = orderService.computeSmallOrderSurcharge(cartValue, venueDynamicResponse)
 

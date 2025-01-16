@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity
 class ExternalService(private val restTemplate: RestTemplate) {
 
 
-    fun fetchVenueLocation(venueSlug: String): List<Double>? {
+     fun fetchVenueLocation(venueSlug: String): List<Double>? {
         val url = String.format("https://consumer-api.development.dev.woltapi.com" +
                 "/home-assignment-api/v1/venues/%s/static", venueSlug)
 
@@ -31,7 +31,7 @@ class ExternalService(private val restTemplate: RestTemplate) {
 
 
 
-    fun fetchVenueDynamic(venueSlug: String): VenueDynamicResponse? {
+     fun fetchVenueDynamic(venueSlug: String): VenueDynamicResponse? {
         val url = String.format("https://consumer-api.development.dev.woltapi.com" +
                 "/home-assignment-api/v1/venues/%s/dynamic", venueSlug)
         return try {
